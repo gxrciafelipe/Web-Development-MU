@@ -1,0 +1,4 @@
+For this Project, I've created two websites: index.html and contact.html;
+On index, I've put some basic information about me, the purpose of the website and also a picture of me. Also, there's a navigation bar where the user can easily switch between both websites.
+On contact, I've put my contact information and I also implemented a simple form where the user can contact me by including their name, email, and message.
+I've put a list on my the index page, listing my interests; I've put a table on the contact page, to show my social media organized; And I've put the special character &copy; at the footer of both pages to indicate a copyright.
