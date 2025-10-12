@@ -1,3 +1,4 @@
+Milestone 1
 For this Project, I've created two websites: index.html and contact.html;
 On index, I've put some basic information about me, the purpose of the website and also a picture of me. Also, there's a navigation bar where the user can easily switch between both websites.
 On contact, I've put my contact information and I also implemented a simple form where the user can contact me by including their name, email, and message.
