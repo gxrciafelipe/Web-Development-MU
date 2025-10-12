@@ -1,0 +1,185 @@
+/* ========== GLOBAL STYLES ========== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding: 0 20px;
+}
+
+p{
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+p:hover{
+    color: orange;
+}
+
+/* ========== HEADINGS ========== */
+h1, h2, h3, h4 {
+  color: #222;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2em;
+  margin-top: 20px;
+}
+
+h3 {
+  color: #444;
+}
+
+/* ========== NAVIGATION BAR ========== */
+header {
+  background-color: #333;
+  color: white;
+  padding: 16px 0;
+  margin-bottom: 20px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  font-size: 1.2em;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover,
+nav a:focus {
+  color: #ffcc00;
+  text-decoration: underline;
+}
+
+/* ========== SECTIONS & CONTENT ========== */
+section, ul, p, table, form {
+  margin-bottom: 20px;
+}
+
+/* ========== LISTS ========== */
+ul {
+  list-style-type: square;
+  padding-left: 40px;
+}
+
+ul li {
+  margin-bottom: 6px;
+}
+
+ul li:hover{
+    color:rgb(49, 185, 209)
+}
+
+/* ========== TABLE STYLING ========== */
+table {
+  border-collapse: collapse;
+  margin: 10px auto;
+  width: 60%;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+th, td {
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 10px;
+}
+
+th {
+  background-color: #333;
+  color: white;
+}
+
+th:hover{
+    color: orange;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* ========== IMAGES ========== */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 10px auto;
+}
+
+/* ========== FORM STYLING ========== */
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="submit"] {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+input[type="submit"]:hover {
+  background-color: #555;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  text-align: center;
+  margin-top: 30px;
+  padding: 20px 0;
+  background-color: #333;
+  color: #fff;
+  font-size: 0.9em;
+}
+
+footer a {
+  color: #ffcc00;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
