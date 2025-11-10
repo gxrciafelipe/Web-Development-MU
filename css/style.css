@@ -86,20 +86,65 @@ nav a:focus {
   text-decoration: underline;
 }
 
-nav button#theme-toggle {
-  position: absolute;       /* position relative to nav */
-  right: 20px;              /* distance from right edge */
-  background-color: #ffcc00;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+/* ========== DARK MODE SLIDE TOGGLE ========== */
+
+/* Wrapper positions the toggle at the right */
+.theme-switch-wrapper {
+  position: absolute;
+  right: 20px;
+  display: flex;
+  align-items: center;
 }
 
-nav button#theme-toggle:hover {
-  background-color: #e6b800;
+/* Hide the default checkbox */
+.theme-switch-wrapper input[type="checkbox"] {
+  display: none;
+}
+
+/* Slider label container */
+.theme-switch {
+  position: relative;
+  width: 60px;
+  height: 28px;
+  border-radius: 14px;
+  background-color: #ccc;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  box-sizing: border-box;
+}
+
+/* The circle that moves */
+.theme-switch .slider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  z-index: 2;
+}
+
+/* Sun and moon icons */
+.theme-switch .sun,
+.theme-switch .moon {
+  font-size: 16px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Slide the circle when checked */
+.theme-switch-wrapper input:checked + .theme-switch .slider {
+  transform: translateX(32px);
+}
+
+/* Change background of the label when checked */
+.theme-switch-wrapper input:checked + .theme-switch {
+  background-color: #444;
 }
 
 /* ========== SECTIONS & CONTENT ========== */

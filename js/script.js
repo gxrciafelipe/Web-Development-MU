@@ -10,7 +10,7 @@ if (currentTheme === 'dark') {
 }
 
 // Event listener to toggle theme and save preference
-themeToggleBtn.addEventListener('click', () => {
+themeToggleBtn.addEventListener('change', () => {
   document.body.classList.toggle('dark-mode');
 
   // Save theme preference in localStorage
