@@ -7,6 +7,9 @@ const themeToggleBtn = document.getElementById('theme-toggle');
 const currentTheme = localStorage.getItem('theme');
 if (currentTheme === 'dark') {
   document.body.classList.add('dark-mode');
+  themeToggleBtn.checked = true; // <-- Set the toggle to "moon" position
+} else {
+  themeToggleBtn.checked = false; // Ensure it's "sun" for light mode
 }
 
 // Event listener to toggle theme and save preference

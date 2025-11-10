@@ -104,15 +104,15 @@ nav a:focus {
 /* Slider label container */
 .theme-switch {
   position: relative;
-  width: 60px;
-  height: 28px;
-  border-radius: 14px;
+  width: 70px;
+  height: 34px;
+  border-radius: 17px;
   background-color: #ccc;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 6px;
+  padding: 0 4px;
   box-sizing: border-box;
 }
 
@@ -121,8 +121,8 @@ nav a:focus {
   position: absolute;
   top: 2px;
   left: 2px;
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   background-color: #fff;
   border-radius: 50%;
   transition: transform 0.3s ease, background-color 0.3s ease;
@@ -132,14 +132,15 @@ nav a:focus {
 /* Sun and moon icons */
 .theme-switch .sun,
 .theme-switch .moon {
-  font-size: 16px;
+  font-size: 18px;
+  line-height: 34px;
   z-index: 3;
   pointer-events: none;
 }
 
 /* Slide the circle when checked */
 .theme-switch-wrapper input:checked + .theme-switch .slider {
-  transform: translateX(32px);
+  transform: translateX(36px);
 }
 
 /* Change background of the label when checked */
