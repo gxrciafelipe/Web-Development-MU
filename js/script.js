@@ -1,61 +1,65 @@
-// ========== THEME TOGGLER ==========
-
-// Select the existing button in the nav
+// ========== VARIABLES ==========
 const themeToggleBtn = document.getElementById('theme-toggle');
+const form = document.querySelector('form');
 
-// Check localStorage for saved theme preference
-const currentTheme = localStorage.getItem('theme');
-if (currentTheme === 'dark') {
-  document.body.classList.add('dark-mode');
-  themeToggleBtn.checked = true; // <-- Set the toggle to "moon" position
-} else {
-  themeToggleBtn.checked = false; // Ensure it's "sun" for light mode
+// ========== THEME TOGGLER FUNCTIONS ==========
+/**
+ * Apply theme based on localStorage or default to light
+ */
+function loadTheme() {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    themeToggleBtn.checked = true; // Set toggle to "moon"
+  } else {
+    document.body.classList.remove('dark-mode');
+    themeToggleBtn.checked = false; // Set toggle to "sun"
+  }
 }
 
-// Event listener to toggle theme and save preference
-themeToggleBtn.addEventListener('change', () => {
+/**
+ * Toggle dark mode and save preference
+ */
+function toggleTheme() {
   document.body.classList.toggle('dark-mode');
 
-  // Save theme preference in localStorage
   if (document.body.classList.contains('dark-mode')) {
     localStorage.setItem('theme', 'dark');
   } else {
     localStorage.setItem('theme', 'light');
   }
-});
-
-
-// ========== FORM VALIDATION (only runs on contact.html) ==========
-const form = document.querySelector('form');
-if (form) {
-  form.addEventListener('submit', (event) => {
-    event.preventDefault(); // Stop form from submitting automatically
-
-    // Grab input values
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
-
-    // Initialize error message container
-    let errors = [];
-
-    // Basic validation checks
-    if (name === '') {
-      errors.push('Name field cannot be empty.');
-    }
-    if (email === '') {
-      errors.push('Email field cannot be empty.');
-    }
-    if (message === '') {
-      errors.push('Message field cannot be empty.');
-    }
-
-    // Display errors or success message
-    if (errors.length > 0) {
-      alert(errors.join('\n')); // Show all missing fields
-    } else {
-      alert('Message sent successfully! Thank you for contacting me.');
-      form.reset(); // Clear the form
-    }
-  });
 }
+
+// ========== FORM VALIDATION FUNCTIONS ==========
+/**
+ * Validate contact form fields
+ */
+function validateForm(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  let errors = [];
+
+  if (!name) errors.push('Name field cannot be empty.');
+  if (!email) errors.push('Email field cannot be empty.');
+  if (!message) errors.push('Message field cannot be empty.');
+
+  if (errors.length > 0) {
+    alert(errors.join('\n'));
+  } else {
+    alert('Message sent successfully! Thank you for contacting me.');
+    form.reset();
+  }
+}
+
+// ========== EVENT LISTENERS ==========
+themeToggleBtn.addEventListener('change', toggleTheme);
+if (form) {
+  form.addEventListener('submit', validateForm);
+}
+
+// ========== INITIALIZE ==========
+loadTheme();
