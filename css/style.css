@@ -25,7 +25,7 @@ p:hover{
 }
 
 /* ========== HEADINGS ========== */
-h1, h2, h3, h4 {
+h1, h2, h3, h4, title {
   color: #222;
   margin-bottom: 10px;
   text-align: center;
@@ -185,6 +185,16 @@ footer a:hover {
 }
 
 /* ========== DARK MODE STYLES ========== */
+body.dark-mode h3 {
+  color:#ffcc00;
+}
+
+body.dark-mode h1,
+body.dark-mode h4,
+body.dark-mode title {
+  color: #ffffff; 
+}
+
 body.dark-mode {
   background-color: #121212;
   color: #f4f4f4;
@@ -210,3 +220,7 @@ body.dark-mode table {
   color: #f4f4f4;
 }
 
+body.dark-mode header {
+  border: 1px solid #fff; /* white border in dark mode */
+  border-radius: 6px;     /* optional: rounded corners */
+}
