@@ -1,12 +1,7 @@
 // ========== THEME TOGGLER ==========
 
-// Select the button dynamically or create one if it doesn’t exist
-const themeToggleBtn = document.createElement('button');
-themeToggleBtn.textContent = 'Toggle Dark Mode';
-themeToggleBtn.id = 'theme-toggle';
-themeToggleBtn.style.display = 'block';
-themeToggleBtn.style.margin = '20px auto';
-document.body.prepend(themeToggleBtn); // Adds button at top of the page
+// Select the existing button in the nav
+const themeToggleBtn = document.getElementById('theme-toggle');
 
 // Check localStorage for saved theme preference
 const currentTheme = localStorage.getItem('theme');
