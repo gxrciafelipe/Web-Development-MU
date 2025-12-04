@@ -96,9 +96,16 @@ nav a:focus {
   align-items: center;
 }
 
-/* Hide the default checkbox */
 .theme-switch-wrapper input[type="checkbox"] {
-  display: none;
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+  /* This keeps it in the DOM so the keyboard can tab to it */
+}
+/* Add a focus ring so the user knows when they have tabbed to the switch */
+.theme-switch-wrapper input:focus + .theme-switch {
+  box-shadow: 0 0 4px 2px #ffcc00; /* Shows a yellow glow when selected via keyboard */
 }
 
 /* Slider label container */
