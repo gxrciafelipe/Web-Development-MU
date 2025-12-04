@@ -385,3 +385,9 @@ body.dark-mode .project-card {
   background-color: #2a2a2a;
   border-color: #444;
 }
+
+@media (max-width: 600px) {
+  table {
+    width: 90%; /* Take up more space on small screens */
+  }
+}
