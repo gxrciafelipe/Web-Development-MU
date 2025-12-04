@@ -2,6 +2,29 @@
 const themeToggleBtn = document.getElementById('theme-toggle');
 const form = document.querySelector('form');
 
+// ========== IMAGE ZOOM LOGIC ==========
+const profilePic = document.getElementById('profile-pic');
+const blurOverlay = document.getElementById('blur-overlay');
+
+// Check if elements exist before adding listeners
+if (profilePic && blurOverlay) {
+  
+  profilePic.addEventListener('mouseenter', () => {
+    console.log("Mouse entered image"); // Debug message
+    document.body.classList.add('dimmed');
+    profilePic.classList.add('zoomed');
+  });
+
+  profilePic.addEventListener('mouseleave', () => {
+    console.log("Mouse left image"); // Debug message
+    document.body.classList.remove('dimmed');
+    profilePic.classList.remove('zoomed');
+  });
+} else {
+  // If this prints, you are missing the ID in HTML
+  console.log("Profile Pic or Overlay not found in HTML");
+}
+
 // ========== THEME TOGGLER FUNCTIONS ==========
 /**
  * Apply theme based on localStorage or default to light
