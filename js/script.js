@@ -58,23 +58,27 @@ function toggleTheme() {
  * Validate contact form fields
  */
 function validateForm(event) {
-  event.preventDefault();
-
+  // 1. Collect values
   const name = document.getElementById('name').value.trim();
   const email = document.getElementById('email').value.trim();
   const message = document.getElementById('message').value.trim();
 
   let errors = [];
 
+  // 2. Check for errors
   if (!name) errors.push('Name field cannot be empty.');
   if (!email) errors.push('Email field cannot be empty.');
   if (!message) errors.push('Message field cannot be empty.');
 
+  // 3. LOGIC CHANGE:
   if (errors.length > 0) {
+    // If there ARE errors, stop the submission
+    event.preventDefault();
     alert(errors.join('\n'));
   } else {
-    alert('Message sent successfully! Thank you for contacting me.');
-    form.reset();
+    // If NO errors, do nothing here. 
+    // The browser will naturally proceed to the 'action' URL (Formspree)
+    // and send the email.
   }
 }
 
@@ -86,3 +90,59 @@ if (form) {
 
 // ========== INITIALIZE ==========
 loadTheme();
+
+// ========== GITHUB API FETCH ==========
+const reposContainer = document.getElementById('github-repos-container');
+
+async function getGithubRepos() {
+    // Only run this if the container exists (so we don't get errors on index.html)
+    if (!reposContainer) return;
+
+    try {
+        // Fetch repositories from GitHub, sorted by latest update
+        const response = await fetch('https://api.github.com/users/gxrciafelipe/repos?sort=updated&direction=desc');
+        
+        if (!response.ok) {
+            throw new Error('Failed to fetch repositories');
+        }
+
+        const repos = await response.json();
+
+        // Clear the "Loading..." text
+        reposContainer.innerHTML = '';
+
+        // Loop through the repositories
+        // We use .slice(0, 6) to only show the latest 6 projects so the page isn't too long
+        repos.slice(0, 6).forEach(repo => {
+            
+            // Create the card div
+            const card = document.createElement('div');
+            card.className = 'project-card'; // Re-using your existing CSS class
+
+            // Handle cases where description or language might be null
+            const description = repo.description ? repo.description : "No description available.";
+            const language = repo.language ? repo.language : "Mixed";
+
+            // Build the HTML content
+            card.innerHTML = `
+                <h2>${repo.name}</h2>
+                <p class="left-align">${description}</p>
+                <p class="left-align"><strong>Tech Stack:</strong> ${language}</p>
+                <div class="project-links">
+                    <a href="${repo.html_url}" target="_blank">View Code on GitHub</a>
+                    ${repo.homepage ? `<a href="${repo.homepage}" target="_blank">Live Demo</a>` : ''}
+                </div>
+            `;
+
+            // Append the card to the container
+            reposContainer.appendChild(card);
+        });
+
+    } catch (error) {
+        console.error("Error loading GitHub projects:", error);
+        reposContainer.innerHTML = '<p>Unable to load projects at this time.</p>';
+    }
+}
+
+// Call the function
+getGithubRepos();
