@@ -398,3 +398,31 @@ body.dark-mode .project-card {
     width: 90%; /* Take up more space on small screens */
   }
 }
+
+/* ========== MOBILE ADJUSTMENTS ========== */
+@media (max-width: 600px) {
+  
+  /* 1. Stack the layout vertically */
+  nav {
+    flex-direction: column; /* Puts links on top, toggle on bottom */
+    padding-bottom: 10px;   /* Adds space inside the header */
+  }
+
+  /* 2. Bring the toggle into the normal flow (stops it from floating over text) */
+  .theme-switch-wrapper {
+    position: static; /* Removes absolute positioning */
+    margin-top: 10px; /* Adds space between links and toggle */
+    /* No need for 'right: 20px' anymore since it's static */
+  }
+
+  /* 3. Tighten the links slightly */
+  .nav-links {
+    gap: 15px;        /* Reduces space between Home/Projects/Contact */
+    font-size: 1rem;  /* Ensures font isn't too huge */
+  }
+
+  /* 4. Increase body padding so content isn't hidden behind the taller header */
+  body {
+    padding-top: 130px; /* Increased from 80px */
+  }
+}

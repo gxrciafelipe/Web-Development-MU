@@ -1,3 +1,11 @@
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+LINK TO MY WEBSITE:
+gxrciafelipe.github.io
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+LINK TO MY REPOSITORY:
+https://github.com/gxrciafelipe/Web-Development-MU
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 Milestone 1
 For this Project, I've created two websites: index.html and contact.html;
 On index, I've put some basic information about me, the purpose of the website and also a picture of me. Also, there's a navigation bar where the user can easily switch between both websites.
@@ -15,7 +23,7 @@ The Contact form checks that Name, Email, and Message fields are not empty and s
 JavaScript concepts used: variables (const and let), conditionals (if/else), functions (arrow function for event listener), and event listeners (change for the toggle, submit for the form).
 Console logs are used for debugging, and localStorage is applied to save the user’s theme preference.
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-Miestone 4
+Milestone 4
 JavaScript Features Summary
 
 1. Image Zoom on Hover
