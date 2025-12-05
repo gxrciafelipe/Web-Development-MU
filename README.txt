@@ -14,3 +14,35 @@ The dark/light mode toggle lets users switch themes by clicking the sun/moon sli
 The Contact form checks that Name, Email, and Message fields are not empty and shows an alert if any field is missing.
 JavaScript concepts used: variables (const and let), conditionals (if/else), functions (arrow function for event listener), and event listeners (change for the toggle, submit for the form).
 Console logs are used for debugging, and localStorage is applied to save the user’s theme preference.
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+Miestone 4
+JavaScript Features Summary
+
+1. Image Zoom on Hover
+----------------------
+- Adds a zoom-in effect when hovering over the profile picture.
+- Dims the background during hover for visual emphasis.
+- Restores normal view when the mouse leaves.
+- Includes console warnings if required HTML elements are missing.
+
+2. Theme Toggle (Light/Dark Mode)
+---------------------------------
+- Loads the saved theme from localStorage on page load.
+- Toggles between light and dark mode using a checkbox switch.
+- Saves the user's preference (light or dark) to localStorage.
+
+3. Contact Form Validation
+--------------------------
+- Validates the name, email, and message fields before submission.
+- Prevents form submission if any field is empty.
+- Displays an alert listing all missing fields.
+- Allows a successful submission to proceed normally to Formspree.
+
+4. GitHub Repository Fetcher
+----------------------------
+- Fetches the latest repositories from the user's GitHub account.
+- Displays the six most recently updated projects.
+- Handles missing descriptions or languages gracefully.
+- Shows project name, description, tech stack, GitHub link, and optional live demo link.
+- Provides a user-friendly error message if the API request fails.
+
