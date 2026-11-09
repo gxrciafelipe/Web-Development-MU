@@ -21,7 +21,7 @@ if (profilePic && blurOverlay) {
     profilePic.classList.remove('zoomed');
   });
 } else {
-  // If this prints, you are missing the ID in HTML
+  // If this prints, missing the ID in HTML
   console.log("Profile Pic or Overlay not found in HTML");
 }
 
@@ -117,7 +117,7 @@ async function getGithubRepos() {
             
             // Create the card div
             const card = document.createElement('div');
-            card.className = 'project-card'; // Re-using your existing CSS class
+            card.className = 'project-card'; // Re-using my existing CSS class
 
             // Handle cases where description or language might be null
             const description = repo.description ? repo.description : "No description available.";
