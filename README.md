@@ -6,6 +6,8 @@ A responsive personal portfolio website built to showcase my projects and intere
 
 ## 🚀 Key Features
 
+* **Binary Rain Background:** A subtle animated canvas of falling 0s and 1s that follows the light/dark theme and stays still for users who prefer reduced motion.
+* **In-Page Resume Viewer:** Visitors can read my resume right on the home page, open it in a new tab, or download it.
 * **Dynamic Project Loading:** Uses the GitHub API to automatically fetch and display my latest coding projects.
 * **Dark/Light Mode:** Includes a theme toggler that persists user preference via `localStorage`.
 * **Contact Form:** Features client-side validation using JavaScript (checks for empty fields) and integrates with Formspree for email delivery.

@@ -3,58 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My Projects</title>
-    <link rel="icon" type="image/png" href="../images/project-management.png"> 
+    <meta name="description" content="Projects by Felipe Sousa Garcia, Computer Science student at Madonna University.">
+    <title>Felipe Garcia | Projects</title>
+    <link rel="icon" type="image/svg+xml" href="../images/icons/favicon-projects.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    
+
+  <canvas id="binary-rain" aria-hidden="true"></canvas>
+
   <header>
     <nav>
+      <a class="brand" href="index.html"><span class="prompt">&gt;</span> felipe.garcia</a>
       <div class="nav-links">
         <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
+        <a href="projects.html" aria-current="page">Projects</a>
+        <a href="index.html#resume">Resume</a>
         <a href="contact.html">Contact</a>
       </div>
       <div class="theme-switch-wrapper">
-        <input type="checkbox" id="theme-toggle" />
+        <input type="checkbox" id="theme-toggle" aria-label="Dark mode" />
         <label for="theme-toggle" class="theme-switch">
-          <span class="sun">☀️</span>
-          <span class="moon">🌙</span>
+          <span class="sun"><img src="../images/icons/sun.svg" alt=""></span>
+          <span class="moon"><img src="../images/icons/moon.svg" alt=""></span>
           <span class="slider"></span>
         </label>
-       </div>
+      </div>
     </nav>
   </header>
 
   <main>
-    <h1>My Projects</h1>
-    <h4>Here are a few projects I have worked on during my studies.</h4>
-    <br>
+    <section class="page-intro">
+      <p class="eyebrow">&gt; ls ~/projects</p>
+      <h1>My Projects</h1>
+      <p class="intro">Here are a few projects I have worked on during my studies. The cards after the first one load straight from my GitHub.</p>
+    </section>
 
-    <div class="project-card">
+    <div class="project-grid">
+      <div class="project-card">
         <h2>Portfolio Website</h2>
-        <p class="left-align">
-            This is the website you are currently looking at! It was built using HTML, CSS, and vanilla JavaScript. 
-            It features a responsive design, a dark/light mode toggle, and a contact form.
+        <p>
+          This is the website you are currently looking at! It was built using HTML, CSS, and vanilla JavaScript.
+          It features a responsive design, a dark/light mode toggle, an animated binary rain background, an in-page resume viewer, and a contact form.
         </p>
-        <p class="left-align"><strong>Tech Stack:</strong> HTML5, CSS3, JavaScript</p>
+        <p><strong>Tech Stack:</strong> HTML5, CSS3, JavaScript</p>
         <div class="project-links">
-            <a href="https://github.com/gxrciafelipe/Web-Development-MU" target="_blank">View Code on GitHub</a>
-            <a href="index.html">Live Demo</a>
+          <a href="https://github.com/gxrciafelipe/Web-Development-MU" target="_blank" rel="noopener">View Code on GitHub</a>
+          <a href="index.html">Live Demo</a>
         </div>
-    </div>
+      </div>
 
-    <div id="github-repos-container">
-        <p>Loading more projects...</p>
+      <div id="github-repos-container">
+        <p class="muted">Loading more projects...</p>
+      </div>
     </div>
-
   </main>
 
   <footer>
     <p>&copy; Felipe Sousa Garcia, 2025</p>
-    <h3>Credits</h3>
-    <a href="https://www.flaticon.com/free-icons/project" title="project icons">Project icons created by afitrose - Flaticon</a>
+    <p class="credits">Credits: <a href="https://tabler.io/icons" title="tabler icons">Icons by Tabler Icons (MIT License)</a></p>
   </footer>
   <script src="../js/script.js"></script>
 </body>

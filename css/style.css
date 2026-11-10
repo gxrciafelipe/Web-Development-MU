@@ -1,3 +1,41 @@
+/* ========== THEME COLORS ========== */
+/* Light mode is the default; body.dark-mode swaps the same variables */
+:root {
+  --bg: #f4f6f9;
+  --surface: rgba(255, 255, 255, 0.9);
+  --surface-strong: #ffffff;
+  --border: #d9e0e8;
+  --text: #1c2530;
+  --muted: #56636f;
+  --accent: #0a7a52;
+  --accent-hover: #086341;
+  --accent-soft: rgba(10, 122, 82, 0.1);
+  --on-accent: #ffffff;
+  --header-bg: rgba(244, 246, 249, 0.85);
+  --rain: #0a7a52;
+  --rain-opacity: 0.2;
+  --shadow: 0 8px 24px rgba(28, 37, 48, 0.08);
+  --font-sans: "Inter", Arial, Helvetica, sans-serif;
+  --font-mono: "JetBrains Mono", Consolas, "Courier New", monospace;
+}
+
+body.dark-mode {
+  --bg: #0b0f14;
+  --surface: rgba(16, 22, 29, 0.88);
+  --surface-strong: #121922;
+  --border: #243040;
+  --text: #e6edf3;
+  --muted: #9aa8b5;
+  --accent: #3fd68f;
+  --accent-hover: #6ee3ab;
+  --accent-soft: rgba(63, 214, 143, 0.12);
+  --on-accent: #06140d;
+  --header-bg: rgba(11, 15, 20, 0.82);
+  --rain: #3fd68f;
+  --rain-opacity: 0.32;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
 /* ========== GLOBAL STYLES ========== */
 * {
   box-sizing: border-box;
@@ -5,93 +43,139 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* keeps #resume etc. from hiding under the header */
+}
+
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.6;
-  background-color: #f4f4f9;
-  color: #333;
-  margin: 0;
-  padding: 0 20px;
-  padding-top: 80px; /* to avoid content being hidden under fixed header */
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-p{
-    margin-bottom: 10px;
-    text-align: center;
+a {
+  color: var(--accent);
 }
 
-p:hover{
-    color: orange;
+a:hover {
+  color: var(--accent-hover);
 }
 
-/* ========== HEADINGS ========== */
-h1, h2, h3, h4, title {
-  color: #222;
-  margin-bottom: 10px;
-  text-align: center;
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
-.left-align {
-  text-align: left;
+/* ========== BINARY RAIN BACKGROUND ========== */
+/* Sits behind everything and stays faint so the content keeps the attention */
+#binary-rain {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: var(--rain-opacity);
+}
+
+/* Everything else stacks above the rain */
+main,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ========== HEADINGS & TEXT ========== */
+h1, h2, h3 {
+  color: var(--text);
+  line-height: 1.2;
 }
 
 h1 {
-  font-size: 2em;
-  margin-top: 20px;
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
 }
 
 h3 {
-  color: #444;
+  font-size: 1.05rem;
+  margin: 20px 0 10px;
+}
+
+p {
+  margin-bottom: 12px;
+}
+
+.muted {
+  color: var(--muted);
 }
 
 /* ========== NAVIGATION BAR ========== */
 header {
-  position: fixed;      /* Fixes it at the top of the page */
-  top: 0;               /* Align to the top */
-  left: 0;              /* Start at the left edge */
-  width: 100%;          /* Stretch across the full page width */
-  z-index: 1000;        /* Ensures it stays above other content */
-  background-color: #333; /* Keep your existing background */
-  color: white;
-  padding: 16px 0;
-  border-bottom: 1px solid #fff; /* optional: add a bottom border for style */
-  margin-bottom: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--header-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
 }
 
 nav {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 14px 16px;
   display: flex;
   align-items: center;
-  justify-content: center;  /* center the nav-links in the page */
-  position: relative;       /* needed for absolute positioning of button */
-  font-size: 1.2em;
-  padding: 0 20px;
+  gap: 24px;
+}
+
+.brand {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand .prompt {
+  color: var(--accent);
 }
 
 .nav-links {
   display: flex;
-  gap: 32px;           /* space between Home and Contact */
+  gap: 24px;
+  margin-left: auto;
 }
 
-nav a {
-  color: #fff;
+nav .nav-links a {
+  color: var(--muted);
   text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
+  font-weight: 500;
+  transition: color 0.2s ease;
 }
 
-nav a:hover,
-nav a:focus {
-  color: #ffcc00;
-  text-decoration: underline;
+nav .nav-links a:hover,
+nav .nav-links a:focus-visible,
+nav .nav-links a[aria-current="page"] {
+  color: var(--accent);
 }
 
 /* ========== DARK MODE SLIDE TOGGLE ========== */
-
-/* Wrapper positions the toggle at the right */
 .theme-switch-wrapper {
-  position: absolute;
-  right: 20px;
   display: flex;
   align-items: center;
 }
@@ -103,326 +187,531 @@ nav a:focus {
   height: 0;
   /* This keeps it in the DOM so the keyboard can tab to it */
 }
-/* Add a focus ring so the user knows when they have tabbed to the switch */
-.theme-switch-wrapper input:focus + .theme-switch {
-  box-shadow: 0 0 4px 2px #ffcc00; /* Shows a yellow glow when selected via keyboard */
+
+/* Focus ring so the user knows when they have tabbed to the switch */
+.theme-switch-wrapper input:focus-visible + .theme-switch {
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
 }
 
 /* Slider label container */
 .theme-switch {
   position: relative;
-  width: 70px;
-  height: 34px;
-  border-radius: 17px;
-  background-color: #ccc;
+  width: 64px;
+  height: 32px;
+  border-radius: 16px;
+  background-color: var(--border);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 4px;
-  box-sizing: border-box;
+  padding: 0 6px;
 }
 
 /* The circle that moves */
 .theme-switch .slider {
   position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 30px;
-  height: 30px;
-  background-color: #fff;
+  top: 3px;
+  left: 3px;
+  width: 26px;
+  height: 26px;
+  background-color: var(--surface-strong);
   border-radius: 50%;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
   z-index: 2;
 }
 
 /* Sun and moon icons */
 .theme-switch .sun,
 .theme-switch .moon {
-  font-size: 18px;
-  line-height: 34px;
+  display: flex;
   z-index: 3;
   pointer-events: none;
 }
 
+.theme-switch img {
+  width: 18px;
+  height: 18px;
+}
+
+/* Lighter moon so it stays visible on the dark knob */
+body.dark-mode .theme-switch .moon img {
+  filter: brightness(2.2);
+}
+
 /* Slide the circle when checked */
 .theme-switch-wrapper input:checked + .theme-switch .slider {
-  transform: translateX(36px);
+  transform: translateX(32px);
 }
 
-/* Change background of the label when checked */
-.theme-switch-wrapper input:checked + .theme-switch {
-  background-color: #444;
+/* ========== PAGE LAYOUT ========== */
+main {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 16px 48px;
+  flex: 1;
 }
 
-/* ========== SECTIONS & CONTENT ========== */
-section, ul, p, table, form {
+.card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+/* Small "01", "02" labels in front of each section title */
+.section-tag {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+/* ========== HERO ========== */
+.hero {
+  padding: 72px 0 56px;
+}
+
+.page-intro {
+  padding: 56px 0 32px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.tagline {
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 2.6vw, 1.25rem);
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.cursor {
+  color: var(--accent);
+  animation: blink 1.1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.intro {
+  max-width: 620px;
+  color: var(--muted);
+  font-size: 1.05rem;
+  margin-bottom: 28px;
+}
+
+/* ========== BUTTONS ========== */
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  color: var(--on-accent);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ========== ABOUT / SKILLS ========== */
+.tag-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-list li {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background-color: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* ========== RESUME SECTION ========== */
+.resume-file {
+  display: flex;
+  align-items: center;
+  gap: 16px;
   margin-bottom: 20px;
 }
 
-/* ========== LISTS ========== */
-ul {
-  list-style-type: square;
-  padding-left: 40px;
+.file-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 58px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background-color: var(--surface-strong);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--accent);
 }
 
-ul li {
+.file-name {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  margin-bottom: 0;
+  word-break: break-all;
+}
+
+.file-meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.text-link {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.resume-viewer {
+  margin-top: 24px;
+}
+
+/* Letter-size page ratio so the whole first page fits */
+.resume-viewer iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 8.5 / 11;
+  max-height: 85vh;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.resume-fallback {
+  padding: 16px;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+/* ========== FREE TIME ========== */
+.hobby-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 12px;
+}
+
+.hobby-grid li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background-color: var(--surface-strong);
+  font-weight: 500;
+  transition: border-color 0.2s ease;
+}
+
+.hobby-grid li:hover {
+  border-color: var(--accent);
+}
+
+/* Icons are Tabler Icons SVG files in images/icons */
+.hobby-icon {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background-color: var(--accent-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hobby-icon img {
+  width: 22px;
+  height: 22px;
+}
+
+/* The icon files are drawn in the light-mode green; this brightens them to the dark-mode green */
+body.dark-mode .hobby-icon img {
+  filter: brightness(1.75);
+}
+
+/* ========== PROJECTS PAGE STYLES ========== */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* GitHub cards are added into this container, so it shares the grid */
+#github-repos-container {
+  display: contents;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px); /* Slight lift on hover */
+  border-color: var(--accent);
+}
+
+.project-card h2 {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  word-break: break-word;
+}
+
+.project-card p {
+  color: var(--muted);
+}
+
+.project-card strong {
+  color: var(--text);
+}
+
+.project-links {
+  margin-top: auto;
+  padding-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.project-links a {
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.project-links a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ========== CONTACT PAGE STYLES ========== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+form label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
   margin-bottom: 6px;
 }
 
-ul li:hover{
-    color:rgb(49, 185, 209)
+form input[type="text"],
+form input[type="email"],
+form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 18px;
+  font: inherit;
+  color: var(--text);
+  background-color: var(--surface-strong);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+form input:focus,
+form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 /* ========== TABLE STYLING ========== */
-table {
+.social-table {
   border-collapse: collapse;
-  margin: 10px auto;
-  width: 60%;
-  background-color: #fff;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}
-
-th, td {
-  border: 1px solid #ddd;
-  text-align: center;
-  padding: 10px;
-}
-
-th {
-  background-color: #333;
-  color: white;
-}
-
-th:hover{
-    color: orange;
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-/* ========== IMAGES ========== */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 10px auto;
-}
-
-/* ========== FORM STYLING ========== */
-form {
-  max-width: 400px;
-  margin: 0 auto;
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}
-
-label {
-  font-weight: bold;
-}
-
-input[type="text"],
-input[type="email"],
-textarea {
   width: 100%;
-  padding: 8px;
-  margin-top: 4px;
-  margin-bottom: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
 }
 
-input[type="submit"] {
-  background-color: #333;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-  border-radius: 4px;
-  font-size: 1em;
-  transition: background-color 0.3s ease;
-  display: block;
-  margin: 0 auto;
+.social-table th {
+  text-align: left;
+  font-size: 1.05rem;
+  padding-bottom: 14px;
 }
 
-input[type="submit"]:hover {
-  background-color: #555;
+.social-table td {
+  padding: 8px 0;
+}
+
+.social-table a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.social-table a:hover {
+  color: var(--accent);
+}
+
+/* White circle keeps the dark icons visible in dark mode */
+.social-table img {
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid var(--border);
 }
 
 /* ========== FOOTER ========== */
 footer {
+  border-top: 1px solid var(--border);
+  background-color: var(--header-bg);
+  padding: 24px 16px;
   text-align: center;
-  margin-top: 30px;
-  padding: 20px 0;
-  background-color: #333;
-  color: #fff;
-  font-size: 0.9em;
+  font-size: 0.9rem;
+  color: var(--muted);
 }
 
-footer a {
-  color: #ffcc00;
-  text-decoration: none;
+footer p {
+  margin-bottom: 6px;
 }
 
-footer a:hover {
-  text-decoration: underline;
+.credits {
+  font-size: 0.75rem;
 }
 
-/* ========== DARK MODE STYLES ========== */
-body.dark-mode h2,
-body.dark-mode h3 {
-  color:#ffcc00;
-}
-
-body.dark-mode h1,
-body.dark-mode h4,
-body.dark-mode title {
-  color: #ffffff; 
-}
-
-body.dark-mode {
-  background-color: #121212;
-  color: #f4f4f4;
-}
-
-body.dark-mode header,
-body.dark-mode footer {
-  background-color: #1f1f1f;
-}
-
-body.dark-mode nav a {
-  color: #ffcc00;
-}
-
-body.dark-mode form {
-  background-color: #2a2a2a;
-  color: #fff;
-  border: 1px solid #444;
-}
-
-body.dark-mode table {
-  background-color: #2a2a2a;
-  color: #f4f4f4;
-}
-
-body.dark-mode header {
-  border: 1px solid #fff; /* white border in dark mode */
-  border-radius: 6px;     /* optional: rounded corners */
-}
-
-/* ========== IMAGE ZOOM & BLUR EFFECT ========== */
-
-/* The invisible overlay */
-#blur-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); 
-  backdrop-filter: blur(5px);           
-  z-index: 9998;                        
-  opacity: 0;                           
-  pointer-events: none;                 
-  transition: opacity 0.3s ease;
-}
-
-/* When active, show the overlay */
-body.dimmed #blur-overlay {
-  opacity: 1;
-}
-
-/* The Profile Picture */
-#profile-pic {
-  transition: transform 0.3s ease;
-  position: relative; 
-  cursor: pointer;
-  z-index: 1; /* Default z-index */
-}
-
-/* The Zoomed State */
-#profile-pic.zoomed {
-  transform: scale(1.7); 
-  z-index: 9999;         /* Must be higher than the overlay (9998) */
-  border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.5); 
-}
-
-/* ========== PROJECTS PAGE STYLES ========== */
-.project-card {
-  background: #fff;
-  border: 1px solid #ddd;
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  transition: transform 0.2s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-5px); /* Slight lift on hover */
-}
-
-.project-card h2 {
-  text-align: left;
-  margin-top: 0;
-}
-
-.project-links a {
-  display: inline-block;
-  margin-right: 15px;
-  padding: 8px 12px;
-  background-color: #333;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 4px;
-  font-size: 0.9em;
-}
-
-.project-links a:hover {
-  background-color: orange;
-  color: #fff;
-}
-
-/* Dark mode adjustments for project cards */
-body.dark-mode .project-card {
-  background-color: #2a2a2a;
-  border-color: #444;
-}
-
-@media (max-width: 600px) {
-  table {
-    width: 90%; /* Take up more space on small screens */
-  }
+.credits a {
+  color: var(--muted);
 }
 
 /* ========== MOBILE ADJUSTMENTS ========== */
+@media (max-width: 720px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 600px) {
-  
-  /* 1. Stack the layout vertically */
+  /* Brand and toggle share the top row, links drop to a second row */
   nav {
-    flex-direction: column; /* Puts links on top, toggle on bottom */
-    padding-bottom: 10px;   /* Adds space inside the header */
+    flex-wrap: wrap;
+    gap: 10px 16px;
   }
 
-  /* 2. Bring the toggle into the normal flow (stops it from floating over text) */
   .theme-switch-wrapper {
-    position: static; /* Removes absolute positioning */
-    margin-top: 10px; /* Adds space between links and toggle */
-    /* No need for 'right: 20px' anymore since it's static */
+    margin-left: auto;
   }
 
-  /* 3. Tighten the links slightly */
   .nav-links {
-    gap: 15px;        /* Reduces space between Home/Projects/Contact */
-    font-size: 1rem;  /* Ensures font isn't too huge */
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+    gap: 20px;
   }
 
-  /* 4. Increase body padding so content isn't hidden behind the taller header */
-  body {
-    padding-top: 130px; /* Increased from 80px */
+  html {
+    scroll-padding-top: 110px;
+  }
+
+  .hero {
+    padding: 48px 0 40px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .file-name {
+    font-size: 0.85rem;
+  }
+}
+
+/* ========== REDUCED MOTION ========== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .cursor {
+    animation: none;
+  }
+
+  .project-card:hover {
+    transform: none;
   }
 }

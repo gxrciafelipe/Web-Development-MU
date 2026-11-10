@@ -3,56 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home</title>
-  <link rel="icon" type="image/png" href="../images/home.png">
+  <meta name="description" content="Felipe Sousa Garcia, Computer Science student at Madonna University. About me, resume, projects, and contact.">
+  <title>Felipe Garcia | Home</title>
+  <link rel="icon" type="image/svg+xml" href="../images/icons/favicon-home.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
-  <div id="blur-overlay"></div>
+  <canvas id="binary-rain" aria-hidden="true"></canvas>
 
   <header>
     <nav>
+      <a class="brand" href="index.html"><span class="prompt">&gt;</span> felipe.garcia</a>
       <div class="nav-links">
-        <a href="index.html">Home</a>
+        <a href="index.html" aria-current="page">Home</a>
         <a href="projects.html">Projects</a>
+        <a href="index.html#resume">Resume</a>
         <a href="contact.html">Contact</a>
       </div>
       <div class="theme-switch-wrapper">
-        <input type="checkbox" id="theme-toggle" />
+        <input type="checkbox" id="theme-toggle" aria-label="Dark mode" />
         <label for="theme-toggle" class="theme-switch">
-          <span class="sun">☀️</span>
-          <span class="moon">🌙</span>
+          <span class="sun"><img src="../images/icons/sun.svg" alt=""></span>
+          <span class="moon"><img src="../images/icons/moon.svg" alt=""></span>
           <span class="slider"></span>
         </label>
-       </div>
+      </div>
     </nav>
   </header>
 
   <main>
-    <h1>Welcome to My Website</h1>
-    <h3>My name is Felipe Garcia, I am a student at Madonna University seeking a degree in Computer Science!</h3>
-    <h4>This is my personal website where you can learn a bit more about me, see some of my projects, and contact me.</h4>
+    <section class="hero">
+      <p class="eyebrow">&gt; Hello, world! My name is</p>
+      <h1>Felipe Sousa Garcia</h1>
+      <p class="tagline">Computer Science student at Madonna University<span class="cursor" aria-hidden="true">_</span></p>
+      <p class="intro">Welcome to my personal website. Here you can learn a bit more about me, read my resume, see some of my projects, and get in touch.</p>
+      <div class="button-row">
+        <a class="btn btn-primary" href="#resume">View my resume</a>
+        <a class="btn btn-secondary" href="projects.html">See my projects</a>
+      </div>
+    </section>
 
-    <img id="profile-pic" src="../images/me.png" alt="Picture of myself" width="200">
-    
-    <p>This is me!</p>
+    <section id="about" class="card">
+      <h2 class="section-title"><span class="section-tag">01</span>About me</h2>
+      <p>I'm a Computer Science student and international student-athlete from Brazil. After earning my Associate in Arts at Carl Sandburg College with a 4.0 GPA, I transferred to Madonna University, where I'm working toward a Bachelor of Science in Computer Science (expected May 2027).</p>
+      <h3>Skills</h3>
+      <ul class="tag-list">
+        <li>Python</li>
+        <li>JavaScript</li>
+        <li>SQL</li>
+        <li>C</li>
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>React</li>
+        <li>Vite</li>
+      </ul>
+    </section>
 
-    <h3 class="left-align">Some of my interests are:</h3>
-    <ul>
-      <li>Programming</li>
-      <li>Playing sports</li>
-      <li>Learning foreign languages</li>
-      <li>Hanging out with my friends</li>
-      <li>Playing video games</li>
-      <li>Traveling</li>
-    </ul>
+    <section id="resume" class="card">
+      <h2 class="section-title"><span class="section-tag">02</span>Resume</h2>
+      <div class="resume-file">
+        <div class="file-icon" aria-hidden="true">PDF</div>
+        <div>
+          <p class="file-name">Felipe_Sousa_Garcia_Resume</p>
+          <p class="file-meta">PDF · 1 page</p>
+        </div>
+      </div>
+      <div class="button-row">
+        <button type="button" id="resume-toggle" class="btn btn-primary" aria-expanded="false" aria-controls="resume-viewer">View resume</button>
+        <a class="btn btn-secondary" href="../resume/Felipe_Sousa_Garcia_Resume.pdf" download="Felipe_Sousa_Garcia_Resume.pdf">Download</a>
+        <a class="text-link" href="../resume/Felipe_Sousa_Garcia_Resume.pdf" target="_blank" rel="noopener">Open in new tab</a>
+      </div>
+      <div id="resume-viewer" class="resume-viewer" hidden>
+        <p class="resume-fallback" hidden>Your browser can't show the resume inside this page. Use "Open in new tab" or "Download" above to see it.</p>
+      </div>
+    </section>
+
+    <section id="free-time" class="card">
+      <h2 class="section-title"><span class="section-tag">03</span>What I like to do in my free time</h2>
+      <ul class="hobby-grid">
+        <li><span class="hobby-icon"><img src="../images/icons/headphones.svg" alt=""></span>Listening to music</li>
+        <li><span class="hobby-icon"><img src="../images/icons/soccer-ball.svg" alt=""></span>Playing soccer</li>
+        <li><span class="hobby-icon"><img src="../images/icons/bulb.svg" alt=""></span>Developing new skills</li>
+        <li><span class="hobby-icon"><img src="../images/icons/gamepad.svg" alt=""></span>Playing video games</li>
+        <li><span class="hobby-icon"><img src="../images/icons/plane.svg" alt=""></span>Traveling</li>
+        <li><span class="hobby-icon"><img src="../images/icons/language.svg" alt=""></span>Learning foreign languages</li>
+        <li><span class="hobby-icon"><img src="../images/icons/planet.svg" alt=""></span>Learning about the universe</li>
+        <li><span class="hobby-icon"><img src="../images/icons/bone.svg" alt=""></span>Playing with my dog</li>
+      </ul>
+    </section>
   </main>
 
   <footer>
     <p>&copy; Felipe Sousa Garcia, 2025</p>
-    <h3>Credits</h3>
-    <a href="https://www.flaticon.com/free-icons/home" title="home icons">Home icons created by Dave Gandy - Flaticon</a>
+    <p class="credits">Credits: <a href="https://tabler.io/icons" title="tabler icons">Icons by Tabler Icons (MIT License)</a></p>
   </footer>
   <script src="../js/script.js"></script>
 </body>
